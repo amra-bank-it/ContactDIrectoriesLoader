@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-ContactDirectoriesLoader-271DD4DA-9CB4-47CC-B9FC-FD166B623053</UserSecretsId>
+	<OutputType>exe</OutputType>
+	<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+	 <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.0" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0" />
+	<PackageReference Include="EFCore.BulkExtensions" Version="6.4.2" />
+	<PackageReference Include="NLog" Version="4.7.13" />
+	<PackageReference Include="NLog.Extensions.Logging" Version="1.7.4" />
+	<PackageReference Include="NLog.Web.AspNetCore" Version="4.14.0" />
+	<PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.12" />    
+	<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="Quartz" Version="3.3.3" />
+	<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />  
+  </ItemGroup>
+</Project>
