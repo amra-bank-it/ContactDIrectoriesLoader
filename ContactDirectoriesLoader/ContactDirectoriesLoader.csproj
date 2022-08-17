@@ -8,6 +8,7 @@
 	<OutputType>exe</OutputType>
 	<PublishSingleFile>false</PublishSingleFile>
 	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
