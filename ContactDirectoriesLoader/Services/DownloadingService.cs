@@ -101,7 +101,7 @@ namespace ContactDirectoriesLoader.Services
 
                 if (responseString != null)
                 {
-                    File.WriteAllText(@"D:\Projects\DictionaryLoader\ContactDir_prod_full_20220330.txt", responseString, System.Text.Encoding.GetEncoding(1251));
+                    File.WriteAllText(@".\DictionaryLoader\ContactDir_prod_full_20220330.txt", responseString, System.Text.Encoding.GetEncoding(1251));
                 }
 
                 TextReader textReader = new StringReader(responseString);
