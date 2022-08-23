@@ -18,6 +18,7 @@ IHost host = Host.CreateDefaultBuilder(args)
         IConfiguration configuration = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json")
+        .AddEnvironmentVariables()
         .Build();
 
         services.AddHostedService<Worker>();
