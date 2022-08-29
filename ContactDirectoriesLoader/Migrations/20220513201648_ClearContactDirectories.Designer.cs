@@ -23,8 +23,64 @@ namespace ContactDirectoriesLoader.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+      modelBuilder.Entity("ContactDirectoriesLoader.Repository.Entities.BadDoc", b =>
+      {
+        b.Property<bool>("Erased")
+        .HasColumnType("bit")
+        .HasColumnName("ERASED");
 
-            modelBuilder.Entity("ContactDirectoriesLoader.Repository.Entities.Bank", b =>
+        b.Property<int>("Version")
+            .HasColumnType("int")
+            .HasColumnName("VERSION");
+
+        b.Property<int>("Id")
+            .HasColumnType("int")
+            .HasColumnName("ID");
+
+        b.Property<string>("Country")
+            .HasMaxLength(35)
+            .HasColumnType("nvarchar(35)")
+            .HasColumnName("COUNTRY");
+
+        b.Property<int>("TypeDoc")
+            .HasColumnType("int")
+            .HasColumnName("TYPDOC");
+
+        b.Property<int>("sDoc")
+            .HasColumnType("int")
+            .HasColumnName("S_DOC");
+        b.Property<int>("nDoc")
+            .HasColumnType("int")
+            .HasColumnName("N_DOC");
+
+        b.Property<int>("blocked")
+            .HasColumnType("int")
+            .HasColumnName("BLOCKED");
+        b.Property<int>("c10")
+            .HasColumnType("int")
+            .HasColumnName("c10");
+        b.Property<int>("c11")
+            .HasColumnType("int")
+            .HasColumnName("c11");
+
+
+        b.Property<string>("info")
+            .HasMaxLength(35)
+            .HasColumnType("nvarchar(255)")
+            .HasColumnName("INFO");
+
+        b.Property<string>("info1")
+            .HasMaxLength(35)
+            .HasColumnType("nvarchar(255)")
+            .HasColumnName("INFO1");
+
+        b.HasKey("Id");
+
+        b.ToTable("BAD_DOC");
+      });
+
+
+      modelBuilder.Entity("ContactDirectoriesLoader.Repository.Entities.Bank", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int")

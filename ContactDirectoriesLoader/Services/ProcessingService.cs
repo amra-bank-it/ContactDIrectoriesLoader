@@ -105,6 +105,7 @@ namespace ContactDirectoriesLoader.Services
 
         private async Task ProcessDirectories(ContactBusinessLevelResponse contactDirectories, int directoryVersion)
         {
+            await ProcessBadDocsirectory(contactDirectories, directoryVersion);
             await ProcessBanksDirectory(contactDirectories, directoryVersion);
             await ProcessBankCitiesDirectory(contactDirectories, directoryVersion);
             await ProcessBankServicesDirectory(contactDirectories, directoryVersion);
@@ -121,25 +122,40 @@ namespace ContactDirectoriesLoader.Services
             await ProcessRegionsDirectory(contactDirectories, directoryVersion);
             await ProcessScenarioItemDirectory(contactDirectories, directoryVersion);
             await ProcessServDirectory(contactDirectories, directoryVersion);
-        }
+    }
 
-        private async Task ProcessBanksDirectory(ContactBusinessLevelResponse contactDirectories, int directoryVersion)
-        {
-            if (contactDirectories.BanksDirectory == null)
-            {
-                return;
-            }
+    private async Task ProcessBadDocsirectory(ContactBusinessLevelResponse contactDirectories, int directoryVersion)
+    {
+      if (contactDirectories.BadDocsDirectory == null)
+      {
+        return;
+      }
 
-            _logger.LogInformation("Загрузка справочника банков...");
+      _logger.LogInformation("Загрузка справочника плохих паспортов...");
 
-            var compressedDirectory = contactDirectories.BanksDirectory;
+      var compressedDirectory = contactDirectories.BadDocsDirectory;
 
-            await ProcessDirectory<BankModel, Bank, BankMapper, BankRepository>(compressedDirectory, directoryVersion);
+       ProcessDirectory<BadDocModel, BadDoc, BadDocMapper, BadDocRepository>(compressedDirectory, directoryVersion);
 
-            _logger.LogInformation("Загрузка справочника банков завершена");
-        }
+      _logger.LogInformation("Загрузка справочника плохих паспортов завершена");
+    }
+    private async Task ProcessBanksDirectory(ContactBusinessLevelResponse contactDirectories, int directoryVersion)
+    {
+      if (contactDirectories.BanksDirectory == null)
+      {
+        return;
+      }
 
-        private async Task ProcessBankCitiesDirectory(ContactBusinessLevelResponse contactDirectories, int directoryVersion)
+      _logger.LogInformation("Загрузка справочника банков...");
+
+      var compressedDirectory = contactDirectories.BanksDirectory;
+
+      await ProcessDirectory<BankModel, Bank, BankMapper, BankRepository>(compressedDirectory, directoryVersion);
+
+      _logger.LogInformation("Загрузка справочника банков завершена");
+    }
+
+    private async Task ProcessBankCitiesDirectory(ContactBusinessLevelResponse contactDirectories, int directoryVersion)
         {
             if (contactDirectories.BankCitiesDirectory == null)
             {
@@ -377,8 +393,17 @@ namespace ContactDirectoriesLoader.Services
             TextReader textReader = new StringReader(directoryString);
 
             XmlSerializer serializer = new XmlSerializer(typeof(BorlandDatapacket<TDirectoryModel>));
+            BorlandDatapacket<TDirectoryModel> directoriesPacket = null;
+      try
+      {
+         directoriesPacket = serializer.Deserialize(textReader) as BorlandDatapacket<TDirectoryModel>;
 
-            var directoriesPacket = serializer.Deserialize(textReader) as BorlandDatapacket<TDirectoryModel>;
+      }
+      catch (Exception err )
+      {
+        int tt = 0;
+        throw;
+      }
 
             if (directoriesPacket == null)
             {

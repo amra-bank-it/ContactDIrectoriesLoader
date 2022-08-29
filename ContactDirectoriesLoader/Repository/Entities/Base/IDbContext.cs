@@ -24,8 +24,9 @@ namespace ContactDirectoriesLoader.Repository.Entities.Base
         DatabaseFacade GetDatabase();
 
         DbSet<ControlRule> ControlRules{ get; set; }
-        DbSet<Bank> Banks { get; set; }
-        DbSet<BankCity> BankCities { get; set; }
+    DbSet<BadDoc> BadDocs { get; set; }
+    DbSet<Bank> Banks { get; set; }
+    DbSet<BankCity> BankCities { get; set; }
         DbSet<BankServ> BankServices { get; set; }
         DbSet<Country> Countries { get; set; }
         DbSet<Feature> Features { get; set; }

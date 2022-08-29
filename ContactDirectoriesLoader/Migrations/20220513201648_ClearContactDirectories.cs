@@ -26,6 +26,7 @@ namespace ContactDirectoriesLoader.Migrations
 						begin
 							if object_id('dbo.ATTRLIST') is not null truncate table dbo.ATTRLIST;
 							if object_id('dbo.BANKS') is not null truncate table dbo.BANKS;
+							if object_id('dbo.BAD_DOC') is not null truncate table dbo.BAD_DOC;
 							if object_id('dbo.BANKSERV') is not null truncate table dbo.BANKSERV;
 							if object_id('dbo.BNK_CITY') is not null truncate table dbo.BNK_CITY;
 							if object_id('dbo.KFM_INFO') is not null truncate table dbo.KFM_INFO;

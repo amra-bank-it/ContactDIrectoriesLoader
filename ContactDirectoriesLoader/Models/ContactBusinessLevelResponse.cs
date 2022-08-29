@@ -79,10 +79,12 @@ namespace ContactDirectoriesLoader.Models
             }
         }
 
-        [XmlElement(ElementName = "BANKS")]
-        public string BanksDirectory { get; set; }
+    [XmlElement(ElementName = "BANKS")]
+    public string BanksDirectory { get; set; }
+    [XmlElement(ElementName = "BAD_DOC")]
+    public string BadDocsDirectory { get; set; }
 
-        [XmlElement(ElementName = "BNK_CITY")]
+    [XmlElement(ElementName = "BNK_CITY")]
         public string BankCitiesDirectory { get; set; }
 
         [XmlElement(ElementName = "BANKSERV")]

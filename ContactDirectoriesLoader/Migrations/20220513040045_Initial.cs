@@ -9,7 +9,32 @@ namespace ContactDirectoriesLoader.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+
+              migrationBuilder.CreateTable(
+            name: "BAD_DOC",
+            columns: table => new
+            {
+              ID = table.Column<int>(type: "int", nullable: false),
+              VERSION = table.Column<int>(type: "int", nullable: false),
+              ERASED = table.Column<bool>(type: "bit", nullable: false),
+              COUNTRY = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
+              TYPDOC = table.Column<int>(type: "int", nullable: false),
+              S_DOC = table.Column<string>(type: "nvarchar(80)", nullable: false),
+              N_DOC = table.Column<string>(type: "nvarchar(80)", nullable: false),
+              BLOCKED = table.Column<int>(type: "int", nullable: false),
+              INFO = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
+              INFO1 = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
+              c10 = table.Column<int>(type: "int", nullable: false),
+              c11 = table.Column<int>(type: "int", nullable: false),
+            },
+            constraints: table =>
+            {
+              table.PrimaryKey("PK_BAD_DOC", x => x.ID);
+            });
+
+
+
+      migrationBuilder.CreateTable(
                 name: "ATTRLIST",
                 columns: table => new
                 {
@@ -345,10 +370,12 @@ namespace ContactDirectoriesLoader.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ATTRLIST");
+      migrationBuilder.DropTable(
+          name: "ATTRLIST");
+      migrationBuilder.DropTable(
+          name: "BAD_DOC");
 
-            migrationBuilder.DropTable(
+      migrationBuilder.DropTable(
                 name: "BANKS");
 
             migrationBuilder.DropTable(
